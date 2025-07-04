@@ -59,19 +59,11 @@ Ensure Ollama is running in the background.
 
 ### Running the Application
 
-1.  **Start the backend server:**
+1.  **Start both the backend and frontend servers concurrently:**
     ```bash
-    cd server
-    node index.js
+    npm run dev
     ```
-    The server will be accessible at `http://localhost:8000`.
-
-2.  **Start the frontend application:**
-    In a new terminal, run:
-    ```bash
-    npm start
-    ```
-    The React app will open in your browser at `http://localhost:3000`.
+    The backend server will be accessible at `http://localhost:8000`, and the React app will open in your browser at `http://localhost:3000`.
 
 ## API Endpoints
 
