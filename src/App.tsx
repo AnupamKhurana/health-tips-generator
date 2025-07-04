@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent, TextField, Select, MenuItem, FormControl, InputLabel, Alert, List, ListItem, ListItemText } from '@mui/material';
-import ViewTips from './ViewTips';
+import ViewTips from './ViewTips.jsx';
 
 function App() {
   const [userName, setUserName] = useState<string>('');
