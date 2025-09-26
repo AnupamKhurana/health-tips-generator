@@ -108,6 +108,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Anupam Khurana - [@AnupamKhurana](https://twitter.com/AnupamKhurana) - anupam.khurana@example.com
+Anupam Khurana - [@AnupamKhurana](https://twitter.com/anupamkhurana) - anupam.khurana@gmail.com
 
 Project Link: [https://github.com/AnupamKhurana/health-tips-generator](https://github.com/AnupamKhurana/health-tips-generator)
