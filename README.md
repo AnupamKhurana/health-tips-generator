@@ -1,113 +1,81 @@
-# Health Tips Generator
+# 🩺 Health Tips Generator
 
-![Health Tips Generator](https://i.imgur.com/your-gif-or-screenshot.gif)  <!-- Replace with a GIF or screenshot of your application -->
+An AI-driven wellness assistant that generates personalized diet, exercise, and lifestyle recommendations based on individual physical profiles and wellness goals. Built with React (Material-UI) and Node.js/Express, powered by a local SQLite3 database and Ollama (`mistral-nemo`).
 
-This application provides personalized health tips using a Large Language Model (LLM) and allows users to store and manage these tips. It features a React frontend, a Node.js/Express backend, and a SQLite database.
+---
 
-## Features
+## ✨ Features
 
-*   **Personalized Health Tips:** Generates diet, exercise, and wellness tips tailored to individual user data using an LLM.
-*   **User Data Management:** Securely stores user profiles and their associated health tips.
-*   **Tip Retrieval & Deletion:** Easily view all saved tips or remove specific ones.
+- **🥗 Personalized Recommendations**: Uses local LLMs to generate tailored nutrition, workout, and mental wellness tips based on user parameters (age, gender, height, weight, activity level).
+- **📂 User Profiles & History**: Tracks and stores generated tips and user profiles locally.
+- **🔄 Tip CRUD Operations**: Supports viewing all saved health logs, fetching detailed insights by ID, or clearing out old histories.
+- **🛡️ 100% Private & Local**: Zero data is sent to external cloud APIs; your data stays local on your system.
 
-## Technologies
+---
 
-*   **Frontend:** React, Material-UI
-*   **Backend:** Node.js, Express.js
-*   **Database:** SQLite3
-*   **LLM Integration:** Ollama (`mistral-nemo` model)
+## 🛠️ Tech Stack
 
-## Getting Started
+- **Frontend**: React, Material-UI (MUI), Lucide Icons
+- **Backend**: Node.js, Express.js
+- **Database**: SQLite3 (via sqlite3 library)
+- **Local AI**: Ollama (`mistral-nemo` model)
 
-Follow these steps to set up and run the application locally.
+---
 
-### Prerequisites
+## 📋 Prerequisites
 
-*   [Node.js](https://nodejs.org/) (LTS version recommended)
-*   [npm](https://www.npmjs.com/) (comes with Node.js)
-*   [Ollama](https://ollama.ai/) (installed and running)
+Ensure you have the following installed:
+1. **Node.js 18+** & **npm**
+2. **Ollama** installed on your system (Download from [ollama.ai](https://ollama.ai))
 
-### Ollama Setup
+---
 
-Before starting the application, pull the required LLM model:
+## 🚀 Setup & Installation
 
+### 1. Clone the Repository
+```bash
+git clone https://github.com/AnupamKhurana/health-tips-generator.git
+cd health-tips-generator
+```
+
+### 2. Pull the AI Model
+Ensure Ollama is running in the background, then pull the model:
 ```bash
 ollama pull mistral-nemo
 ```
 
-Ensure Ollama is running in the background.
+### 3. Install Dependencies
+Install packages for both the React frontend and Express backend:
+```bash
+# Install root (frontend) dependencies
+npm install
 
-### Installation
+# Install backend dependencies
+cd server
+npm install
+cd ..
+```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/AnupamKhurana/health-tips-generator.git
-    cd health-tips-generator
-    ```
+### 4. Start the Application
+To run the frontend and backend servers concurrently:
+```bash
+npm run dev
+```
+- **React Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Express Backend**: [http://localhost:8000](http://localhost:8000)
 
-2.  **Install backend dependencies:**
-    ```bash
-    cd server
-    npm install
-    cd ..
-    ```
+---
 
-3.  **Install frontend dependencies:**
-    ```bash
-    npm install
-    ```
+## 📂 Project Structure
 
-### Running the Application
-
-1.  **Start both the backend and frontend servers concurrently:**
-    ```bash
-    npm run dev
-    ```
-    The backend server will be accessible at `http://localhost:8000`, and the React app will open in your browser at `http://localhost:3000`.
-
-## API Endpoints
-
-The backend exposes the following REST API endpoints:
-
-*   **`POST /api/tips`**: Create a new health tip entry.
-    *   **Body Example:**
-        ```json
-        {
-            "userName": "John Doe",
-            "age": 30,
-            "gender": "Male",
-            "height": 175,
-            "weight": 70,
-            "activityLevel": "Moderate",
-            "healthGoals": "Maintain health",
-            "diet": ["Eat more vegetables"],
-            "exercise": ["30 mins cardio daily"],
-            "wellness": ["Meditate 10 mins daily"]
-        }
-        ```
-
-*   **`GET /api/tips`**: Retrieve all stored health tips.
-
-*   **`GET /api/tips/:id`**: Retrieve a specific health tip by ID.
-
-*   **`DELETE /api/tips/:id`**: Delete a health tip by ID.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue.
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## Contact
-
-Anupam Khurana - [@AnupamKhurana](https://twitter.com/anupamkhurana) - anupam.khurana@gmail.com
-
-Project Link: [https://github.com/AnupamKhurana/health-tips-generator](https://github.com/AnupamKhurana/health-tips-generator)
+```
+health-tips-generator/
+├── server/              # Node.js/Express Backend & SQLite db
+│   ├── database.db      # Local SQLite database
+│   ├── index.js         # API Server & Ollama logic
+│   └── package.json     # Backend packages
+├── src/                 # React frontend src code
+├── public/              # Static frontend assets
+├── package.json         # Main launcher & frontend packages
+└── README.md            # This guide
+```
