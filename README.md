@@ -1,5 +1,8 @@
 # 🩺 Health Tips Generator
 
+> **App Root Folder:** `/mnt/1fc0b605-b95c-4190-ba0a-ae87f22cc120/development/health-tips-generator`
+
+
 An AI-driven wellness assistant that generates personalized diet, exercise, and lifestyle recommendations based on individual physical profiles and wellness goals. Built with React (Material-UI) and Node.js/Express, powered by a local SQLite3 database and Ollama (`mistral-nemo`).
 
 ---
