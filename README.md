@@ -1,56 +1,87 @@
-# 🩺 Health Tips Generator
+# 🩺 AI Health & Wellness Advisor — Personalized Lifestyle Recommendations
 
-> **App Root Folder:** `/mnt/1fc0b605-b95c-4190-ba0a-ae87f22cc120/development/health-tips-generator`
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Express](https://img.shields.io/badge/Express-4.x-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com)
+[![Material-UI](https://img.shields.io/badge/Material--UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)](https://mui.com)
+[![SQLite](https://img.shields.io/badge/SQLite-3-07405E?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org)
+[![Ollama](https://img.shields.io/badge/Ollama-Local_Inference-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.ai)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-
-An AI-driven wellness assistant that generates personalized diet, exercise, and lifestyle recommendations based on individual physical profiles and wellness goals. Built with React (Material-UI) and Node.js/Express, powered by a local SQLite3 database and Ollama (`mistral-nemo`).
-
----
-
-## ✨ Features
-
-- **🥗 Personalized Recommendations**: Uses local LLMs to generate tailored nutrition, workout, and mental wellness tips based on user parameters (age, gender, height, weight, activity level).
-- **📂 User Profiles & History**: Tracks and stores generated tips and user profiles locally.
-- **🔄 Tip CRUD Operations**: Supports viewing all saved health logs, fetching detailed insights by ID, or clearing out old histories.
-- **🛡️ 100% Private & Local**: Zero data is sent to external cloud APIs; your data stays local on your system.
+An AI-driven wellness assistant that generates personalized nutrition, workout, and lifestyle guidance based on physical metrics (age, gender, BMI, activity level) and specific wellness objectives. Engineered with a **React (MUI)** frontend, **Node.js/Express** backend, **SQLite** persistence, and offline LLM inference via **Ollama**.
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Features & Capabilities
 
-- **Frontend**: React, Material-UI (MUI), Lucide Icons
-- **Backend**: Node.js, Express.js
-- **Database**: SQLite3 (via sqlite3 library)
-- **Local AI**: Ollama (`mistral-nemo` model)
-
----
-
-## 📋 Prerequisites
-
-Ensure you have the following installed:
-1. **Node.js 18+** & **npm**
-2. **Ollama** installed on your system (Download from [ollama.ai](https://ollama.ai))
+- 🥗 **Personalized Nutrition & Diet**: Delivers macronutrient and meal recommendations tailored to your metabolic rate and goals (e.g., muscle gain, weight loss, endurance).
+- 🏋️ **Adaptive Exercise Regimens**: Recommends customized fitness routines adjusting for beginner, intermediate, or advanced training states.
+- 🧘 **Holistic Wellness Insights**: Provides actionable sleep hygiene, hydration, and stress-reduction protocols.
+- 💾 **Profile & History Tracking**: Stores all previous wellness plans and body metric snapshots in a local SQLite database.
+- 🔒 **100% Offline & Private**: Health profiles, weight stats, and biometric parameters never leave your local environment.
+- 🎨 **Modern Material-UI Design**: Polished, accessible user interface with responsive forms, health metric badges, and interactive tip history drawers.
 
 ---
 
-## 🚀 Setup & Installation
+## 🛠️ Architecture & Tech Stack
 
-### 1. Clone the Repository
+```
+  [ React Client (MUI) ] ──(REST API)──▶ [ Express.js Server (:8000) ]
+                                                   │
+                        ┌──────────────────────────┴──────────────────────────┐
+                        ▼                                                     ▼
+               [ SQLite3 Database ]                                [ Ollama Local Engine ]
+           (Profiles, Logs, Tips)                               (mistral-nemo / llama3)
+```
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Frontend** | React 18, Material-UI (MUI), Lucide Icons | Client user interface and metric visualization |
+| **Backend** | Node.js, Express.js | API routing, data validation, and LLM orchestration |
+| **Database** | SQLite3 | Embedded persistence for user logs and recommendations |
+| **Inference Engine** | Ollama (`mistral-nemo`) | Local privacy-preserving LLM inference |
+
+---
+
+## 📂 Project Structure
+
+```text
+health-tips-generator/
+├── server/              # Express.js backend & SQLite storage
+│   ├── database.db      # SQLite database file
+│   ├── index.js         # API server, DB queries & Ollama integration
+│   └── package.json     # Backend dependencies
+├── src/                 # React frontend source code
+│   ├── components/      # UI input forms, cards, and modal dialogs
+│   └── App.js           # Main application state and layout
+├── public/              # Static frontend assets
+├── package.json         # Root scripts & frontend dependencies
+└── README.md            # Documentation
+```
+
+---
+
+## 🚀 Quick Start Guide
+
+### Prerequisites
+- **Node.js 18+** & **npm**
+- **Ollama** installed ([download instructions](https://ollama.ai))
+
+### 1. Clone Repository
 ```bash
 git clone https://github.com/AnupamKhurana/health-tips-generator.git
 cd health-tips-generator
 ```
 
-### 2. Pull the AI Model
-Ensure Ollama is running in the background, then pull the model:
+### 2. Pull AI Model
+Start the Ollama daemon and download the recommended model:
 ```bash
 ollama pull mistral-nemo
 ```
 
 ### 3. Install Dependencies
-Install packages for both the React frontend and Express backend:
 ```bash
-# Install root (frontend) dependencies
+# Install frontend dependencies
 npm install
 
 # Install backend dependencies
@@ -59,26 +90,28 @@ npm install
 cd ..
 ```
 
-### 4. Start the Application
-To run the frontend and backend servers concurrently:
+### 4. Launch Application
+Run both frontend and backend concurrently in development mode:
 ```bash
 npm run dev
 ```
-- **React Frontend**: [http://localhost:3000](http://localhost:3000)
-- **Express Backend**: [http://localhost:8000](http://localhost:8000)
+
+- **Frontend:** [http://localhost:3000](http://localhost:3000)
+- **Backend API:** [http://localhost:8000](http://localhost:8000)
 
 ---
 
-## 📂 Project Structure
+## 🔌 API Endpoints Reference
 
-```
-health-tips-generator/
-├── server/              # Node.js/Express Backend & SQLite db
-│   ├── database.db      # Local SQLite database
-│   ├── index.js         # API Server & Ollama logic
-│   └── package.json     # Backend packages
-├── src/                 # React frontend src code
-├── public/              # Static frontend assets
-├── package.json         # Main launcher & frontend packages
-└── README.md            # This guide
-```
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/generate-tip` | Submits profile metrics to Ollama and saves generated recommendations |
+| `GET` | `/api/tips` | Retrieves all saved wellness histories |
+| `GET` | `/api/tips/:id` | Fetches details for a specific historical recommendation |
+| `DELETE`| `/api/tips/:id` | Removes an archived tip from the SQLite database |
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for details.
